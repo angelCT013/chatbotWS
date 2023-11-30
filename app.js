@@ -64,9 +64,7 @@ const flowOpciones = addKeyword(EVENTS.ACTION)
       startIdleTimer();
     }
   );
-  const flowBienvenida = addKeyword(EVENTS.WELCOME)
-    .addAnswer('Bienvenido a este chatbot')
-  const flowBienvenida2 = addKeyword(
+  const flowBienvenida = addKeyword(
     [
     'hola',
     'hi'
@@ -77,7 +75,7 @@ const flowOpciones = addKeyword(EVENTS.ACTION)
      * !ChatGPT Actua
      * Iniciamos activando el Rol
      */
-    await chatGPT.handleMsg(`Eres un bot llamado Zeny un programa llamado Zenith el cual es es encargado del control de empleados, Zenith es una 
+    let resp=await chatGPT.handleMsg(`Eres un bot llamado Zeny un programa llamado Zenith el cual es es encargado del control de empleados, Zenith es una 
     empresa dirigida a las fabricas para el registros de incidencias, consultas, faltas y todo lo relacionado con el control del personal, en este 
     podemos llevar el control de los empleados por departamento cuando sucede algo y el registro de la frecuenca en la cual los departamentos 
     tienen incidencas esto para poder tener datos reales y poder tomar plan de accion con el proposito de disminuir estas mismas, asi como las 
@@ -86,6 +84,8 @@ const flowOpciones = addKeyword(EVENTS.ACTION)
     que tiene el usuario y cosas asi relacionadas, Zenith nace por informacion recolectada de varias empresas donde estos problemas cotidianos son muy 
     comunes y no se toman acciones sobre al respecto, Zenith es creado por 5 estudiantes de la unirsidad UTT (Universidad tecnologica de tijuana) y 
     sus nombres son: Angel Mercado, Cristian Alexis Lopez, Christian Gonzales, Ken Santillan, Guillermo Salas`, { temperature: 0.8 });
+
+    console.log(resp);
 
 
 
