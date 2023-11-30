@@ -2,8 +2,8 @@ require('dotenv').config()
 
 class ChatGPTClass {
   queue = [];
-  optionsGPT ={ model:"gpt-4-1106-preview"};
-  // optionsGPT ={ model:"gpt-3.5-turbo"};
+  // optionsGPT ={ model:"gpt-4-1106-preview"};
+  optionsGPT ={ model:"gpt-3.5-turbo"};
   openai = undefined;
 
   constructor(){
