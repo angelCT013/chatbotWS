@@ -64,7 +64,11 @@ const flowOpciones = addKeyword(EVENTS.ACTION)
       startIdleTimer();
     }
   );
-  const flowBienvenida = addKeyword(EVENTS.WELCOME)
+  const flowBienvenida = addKeyword(
+    [
+    'hola',
+    'hi'
+    ])
   .addAction(async (ctx, { endFlow, flowDynamic, provider, gotoFlow }) => {
   
     /**
@@ -92,21 +96,7 @@ const flowOpciones = addKeyword(EVENTS.ACTION)
     `Tienes otra pregunta? o duda?`,
     {capture:true},
     async (ctx,{fallBack,flowDynamic })=>{
-      let idleTimer;
 
-      const startIdleTimer =() => {
-        clearTimeout(idleTimer);
-        idleTimer = setTimeout(async () => {
-          // Lógica a ejecutar en caso de inactividad global
-          // console.log('Inactividad global detectada');
-          const textExit = await chatGPT.handleMsg(`Despidete de manera amable utilizando de 1 a 3 emojis recordando que fue un gusto atenderlo y que si requiere mas informacion puede escribir la palabra Menú`, { temperature: 0.8 });
-          await flowDynamic(textExit.text);
-          // gotoFlow(flowMsjExit);
-        }, tiempoActividad);
-      };
-
-      // Reiniciar el temporizador al recibir un mensaje
-      startIdleTimer();
       const textContinue = await chatGPT.handleMsg(ctx.body, { temperature: 0.8 });
       const palabrasClave = ['menu'];
   
