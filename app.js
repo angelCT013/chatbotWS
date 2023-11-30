@@ -64,7 +64,9 @@ const flowOpciones = addKeyword(EVENTS.ACTION)
       startIdleTimer();
     }
   );
-  const flowBienvenida = addKeyword(
+  const flowBienvenida = addKeyword(EVENTS.WELCOME)
+    .addAnswer('Bienvenido a este chatbot')
+  const flowBienvenida2 = addKeyword(
     [
     'hola',
     'hi'
