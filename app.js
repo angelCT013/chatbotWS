@@ -24,19 +24,10 @@ const chatGPT= new ChatGPTClass()
  *  @param {El tiempo en milisegundos que permanezcan inactivo el usuario} tiempoActividad
  */
 let usuario=null;
-let odt;
-let password=null;
-let datos;
-const soloNumeros = /^\d+$/;
+
 let tiempoActividad = 180000;
 
-/**
- * !Mensaje del flujo por inactividad
- */
-const flowMsjExit = addKeyword(EVENTS.ACTION)
-.addAnswer(['¡Fue un gusto atenderte! Recuerda que estoy para ayudarte👋',
 
-'Si requieres algo adicional ahora o más adelante, escribe la palabra: Menú'])
 
 
 const flowOpciones = addKeyword(EVENTS.ACTION)
