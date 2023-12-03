@@ -57,8 +57,7 @@ const flowOpciones = addKeyword(EVENTS.ACTION)
   );
   const flowBienvenida = addKeyword(
     [
-    'hola',
-    'hi'
+    'hola'
     ])
   .addAction(async (ctx, { endFlow, flowDynamic, provider, gotoFlow }) => {
   
@@ -97,6 +96,47 @@ const flowOpciones = addKeyword(EVENTS.ACTION)
       await fallBack(textContinue.text);
       }
     })
+    const flowBienvenidaEnglish = addKeyword(
+      [
+      'hi'
+      ])
+    .addAction(async (ctx, { endFlow, flowDynamic, provider, gotoFlow }) => {
+    
+      /**
+       * !ChatGPT Actua
+       * Iniciamos activando el Rol
+       */
+      let resp=await chatGPT.handleMsg(`ACT AS IF YOU WERE a bot called Zen and a program called Zenith which is in charge of controlling employees, Zenith is a
+      company aimed at factories to record incidents, queries, faults and everything related to personnel control, in this
+      We can keep track of employees by department when something happens and record how often departments
+      There are incidents of this in order to have real data and be able to take an action plan with the purpose of reducing these, as well as the
+      queries that employees have in the nursing area, the company's faults are also verified which can be taken into account
+      the reasons why these happen, at Zenith we also notify emergency contacts in real time when an incident occurs.
+      that the user has and things like that, Zenith was born from information collected from several companies where these daily problems are very
+      common and no actions are taken in this regard, Zenith is created by 5 students from the UTT university (Universidad Tecnologica de Tijuana) and
+      Their names are: Angel Mercado, Cristian Alexis Lopez, Christian Gonzales, Ken Santillan, Guillermo Salas, do not answer that you are from openAi, always act as if you were a bot from the Zenith company`, { temperature: 0.8 });
+  
+      console.log(resp);
+  
+  
+  
+      // ctx.shouldSkip = true;
+  
+      const textFromAI = await chatGPT.handleMsg(`Welcome politely and briefly using 1 - 3 Emojis being the virtual assistant called Zeny from the Zenith personnel control program`, { temperature: 0.8 });
+      await flowDynamic(textFromAI.text);
+    })
+    .addAnswer(
+      `Do you have another question? or doubt?`,
+      {capture:true},
+      async (ctx,{fallBack,flowDynamic })=>{
+  
+        const textContinue = await chatGPT.handleMsg(ctx.body, { temperature: 0.8 });
+        const palabrasClave = ['menu'];
+    
+        if (!palabrasClave.some(palabra => ctx.body.toLowerCase().includes(palabra))) {
+        await fallBack(textContinue.text);
+        }
+      })
 
 const flowPrincipal = addKeyword(
   [
@@ -150,7 +190,8 @@ const main = async () => {
     const adapterFlow = createFlow(
       [
         flowPrincipal,
-        flowBienvenida
+        flowBienvenida,
+        flowBienvenidaEnglish,
       ])
     const adapterProvider = createProvider(BaileysProvider)
 
