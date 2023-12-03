@@ -74,7 +74,7 @@ const flowOpciones = addKeyword(EVENTS.ACTION)
     los motivos por las cual estas suceden, en Zenith tambien notificamos en tiempo real cuando sucede una incidencia a los contactos de emergencia 
     que tiene el usuario y cosas asi relacionadas, Zenith nace por informacion recolectada de varias empresas donde estos problemas cotidianos son muy 
     comunes y no se toman acciones sobre al respecto, Zenith es creado por 5 estudiantes de la unirsidad UTT (Universidad tecnologica de tijuana) y 
-    sus nombres son: Angel Mercado, Cristian Alexis Lopez, Christian Gonzales, Ken Santillan, Guillermo Salas`, { temperature: 0.8 });
+    sus nombres son: Angel Mercado, Cristian Alexis Lopez, Christian Gonzales, Ken Santillan, Guillermo Salas. RECUERDA TAMBIEN RESPONDER EN EL IDIOMA EN EL QUE TE HACEN LAS PREGUNTAS`, { temperature: 0.8 });
 
     console.log(resp);
 
